@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+        if(this.status === 200 && this.readyState === 4) {
+            let product = JSON.parse(this.responseText)
+            let namess = product[0]["supporters name"]
+            console.log(namess)
+            create(namess)
+        }
+    }
+    req.open("GET" , "t.json" , true)
+    req.send()
+    function create(p) {
+        for(let i = 0 ; i < p.length ; i++ ) {
+            console.log(p[i])
+        }
+    }
+</script>
+</body>
+</html>
